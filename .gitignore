@@ -1,0 +1,9 @@
+.directory
+.kdev4
+build
+Kent_Beck_TDD.kdev4
+lib
+src/Dollar.cpp
+src/Dollar.hpp
+src/Franc.cpp
+src/Franc.hpp
