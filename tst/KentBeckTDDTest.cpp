@@ -3,31 +3,31 @@
 
 TEST(Multiplication, USD)
 {
-    Dollar five(5);
-    ASSERT_EQ(10, (five.times(2)).getAmount());
-    ASSERT_EQ(15, (five.times(3)).getAmount());
+    Money* five = Money::dollar(5);
+    ASSERT_EQ(10, (five->times(2)).getAmount());
+    ASSERT_EQ(15, (five->times(3)).getAmount());
 }
 
 TEST(FrancMultiplication, CHF)
 {
-    Franc five(5);
-    ASSERT_EQ(10, (five.times(2)).getAmount());
-    ASSERT_EQ(15, (five.times(3)).getAmount());
+    Money* five = Money::franc(5);
+    ASSERT_EQ(10, (five->times(2)).getAmount());
+    ASSERT_EQ(15, (five->times(3)).getAmount());
 }
 
 TEST(Equality, USD)
 {
-    Dollar five(5);
-    Dollar otherFive(5);
-    ASSERT_TRUE(five.equals(otherFive));
-    Dollar six(6);
-    ASSERT_FALSE(five.equals(six));
+    Money* five = Money::dollar(5);
+    Money* otherFive = Money::dollar(5);
+    ASSERT_TRUE(five->equals(*otherFive));
+    Money* six = Money::dollar(6);
+    ASSERT_FALSE(five->equals(*six));
     
-    Franc fiveFranc(5);
-    Franc otherFiveFranc(5);
-    ASSERT_TRUE(fiveFranc.equals(otherFiveFranc));
-    Franc sixFranc(6);
-    ASSERT_FALSE(fiveFranc.equals(sixFranc));
+    Money* fiveFranc = Money::franc(5);
+    Money* otherFiveFranc = Money::franc(5);
+    ASSERT_TRUE(fiveFranc->equals(*otherFiveFranc));
+    Money* sixFranc = Money::franc(6);
+    ASSERT_FALSE(fiveFranc->equals(*sixFranc));
     
-    ASSERT_FALSE(fiveFranc.equals(five));
+    ASSERT_FALSE(fiveFranc->equals(*five));
 }

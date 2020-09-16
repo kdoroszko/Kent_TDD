@@ -5,7 +5,9 @@ class Money
 public:
     
     bool equals(Money newMoney);
-//     static Money* dollar(int newAmount);
+    static Money* dollar(int newAmount);
+    static Money* franc(int newAmount);
+    virtual Money times(int multiplier) {}
     int getAmount() const;
     
 protected:

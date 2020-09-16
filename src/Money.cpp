@@ -32,7 +32,12 @@ Money Franc::times(int multiplier)
     return Franc(amount * multiplier);
 }
 
-// Money* Money::dollar(int newAmount)
-// {
-//     return new Dollar(newAmount);
-// }
+Money* Money::dollar(int newAmount)
+{
+    return new Dollar(newAmount);
+}
+
+Money* Money::franc(int newAmount)
+{
+    return new Franc(newAmount);
+}
