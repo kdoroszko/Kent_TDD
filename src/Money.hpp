@@ -11,7 +11,7 @@ public:
     bool equals(Money newMoney);
     static Money* dollar(int newAmount);
     static Money* franc(int newAmount);
-    virtual Money* times(int multiplier) {}
+    virtual Money* times(int multiplier);
     std::string currency() const;
     int getAmount() const;
     
@@ -27,8 +27,6 @@ class Dollar : public Money
 public:
     
     Dollar(int newAmount, std::string newCurrency);
-    
-    Money* times(int multiplier);
 };
 
 class Franc : public Money
@@ -36,6 +34,4 @@ class Franc : public Money
 public:
     
     Franc(int newAmount, std::string newCurrency);
-    
-    Money* times(int multiplier);
 };

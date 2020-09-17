@@ -2,7 +2,12 @@
 
 bool Money::equals(Money newMoney)
 {
-    return amount_ == newMoney.amount_ && type_ == newMoney.type_;
+    return amount_ == newMoney.amount_ && currency_ == newMoney.currency_;
+}
+
+Money* Money::times(int multiplier)
+{
+    return new Money(amount_ * multiplier, currency_);
 }
 
 std::string Money::currency() const
@@ -21,20 +26,10 @@ Dollar::Dollar(int newAmount, std::string newCurrency)
     type_ = 0;
 }
 
-Money* Dollar::times(int multiplier)
-{
-    return Money::dollar(amount_ * multiplier);
-}
-
 Franc::Franc(int newAmount, std::string newCurrency)
     : Money(newAmount, newCurrency)
 {
     type_ = 1;
-}
-
-Money* Franc::times(int multiplier)
-{
-    return Money::franc(amount_ * multiplier);
 }
 
 Money* Money::dollar(int newAmount)
