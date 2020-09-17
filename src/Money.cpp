@@ -2,42 +2,47 @@
 
 bool Money::equals(Money newMoney)
 {
-    return amount == newMoney.amount && type == newMoney.type;
+    return amount_ == newMoney.amount_ && type_ == newMoney.type_;
+}
+
+std::string Money::currency() const
+{
+    return currency_;
 }
 
 int Money::getAmount() const
 {
-    return amount;
+    return amount_;
 }
 
-Dollar::Dollar(int newAmount)
+Dollar::Dollar(int newAmount, std::string newCurrency)
+    : Money(newAmount, newCurrency)
 {
-    amount = newAmount;
-    type = 0;
+    type_ = 0;
 }
 
-Money Dollar::times(int multiplier)
+Money* Dollar::times(int multiplier)
 {
-    return Dollar(amount * multiplier);
+    return Money::dollar(amount_ * multiplier);
 }
 
-Franc::Franc(int newAmount)
+Franc::Franc(int newAmount, std::string newCurrency)
+    : Money(newAmount, newCurrency)
 {
-    amount = newAmount;
-    type = 1;
+    type_ = 1;
 }
 
-Money Franc::times(int multiplier)
+Money* Franc::times(int multiplier)
 {
-    return Franc(amount * multiplier);
+    return Money::franc(amount_ * multiplier);
 }
 
 Money* Money::dollar(int newAmount)
 {
-    return new Dollar(newAmount);
+    return new Dollar(newAmount, "USD");
 }
 
 Money* Money::franc(int newAmount)
 {
-    return new Franc(newAmount);
+    return new Franc(newAmount, "CHF");
 }

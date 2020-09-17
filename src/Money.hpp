@@ -1,35 +1,41 @@
 #pragma once
 
+#include <string>
+
 class Money
 {
 public:
     
+    Money(int newAmount, std::string newCurrency) : amount_(newAmount), currency_(newCurrency) {}
+    
     bool equals(Money newMoney);
     static Money* dollar(int newAmount);
     static Money* franc(int newAmount);
-    virtual Money times(int multiplier) {}
+    virtual Money* times(int multiplier) {}
+    std::string currency() const;
     int getAmount() const;
     
 protected:
     
-    int amount;
-    int type;
+    int amount_;
+    std::string currency_;
+    int type_;
 };
 
 class Dollar : public Money
 {
 public:
     
-    Dollar(int newAmount);
+    Dollar(int newAmount, std::string newCurrency);
     
-    Money times(int multiplier);
+    Money* times(int multiplier);
 };
 
 class Franc : public Money
 {
 public:
     
-    Franc(int newAmount);
+    Franc(int newAmount, std::string newCurrency);
     
-    Money times(int multiplier);
+    Money* times(int multiplier);
 };
