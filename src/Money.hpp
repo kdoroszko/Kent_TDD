@@ -2,7 +2,9 @@
 
 #include <string>
 
-class Money
+class Expression {};
+
+class Money : public Expression
 {
 public:
     
@@ -11,13 +13,13 @@ public:
     bool equals(Money newMoney);
     static Money* dollar(int newAmount);
     static Money* franc(int newAmount);
-    virtual Money* times(int multiplier);
+    Money* times(int multiplier);
     std::string currency() const;
+    Expression* plus(Money addend);
     int getAmount() const;
     
-protected:
+private:
     
     int amount_;
     std::string currency_;
-    int type_;
 };

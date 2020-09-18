@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Bank.hpp"
 #include "Money.hpp"
 
 TEST(Multiplication, USD)
@@ -26,4 +27,13 @@ TEST(Currency, USDCHF)
     Money* oneFranc = Money::franc(1);
     ASSERT_EQ("USD", oneDollar->currency());
     ASSERT_EQ("CHF", oneFranc->currency());
+}
+
+TEST(SimpleAddition, USD)
+{
+    Money* five = Money::dollar(5);
+    Expression* sum = five->plus(*five);
+    Bank* bank = new Bank;
+    Money* reduced = bank->reduce(*sum, "USD");
+    ASSERT_EQ(10, reduced->getAmount());
 }
