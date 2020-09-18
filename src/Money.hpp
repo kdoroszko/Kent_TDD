@@ -21,17 +21,3 @@ protected:
     std::string currency_;
     int type_;
 };
-
-class Dollar : public Money
-{
-public:
-    
-    Dollar(int newAmount, std::string newCurrency);
-};
-
-class Franc : public Money
-{
-public:
-    
-    Franc(int newAmount, std::string newCurrency);
-};

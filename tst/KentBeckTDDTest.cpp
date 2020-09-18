@@ -8,13 +8,6 @@ TEST(Multiplication, USD)
     ASSERT_EQ(15, (five->times(3))->getAmount());
 }
 
-TEST(FrancMultiplication, CHF)
-{
-    Money* five = Money::franc(5);
-    ASSERT_EQ(10, (five->times(2))->getAmount());
-    ASSERT_EQ(15, (five->times(3))->getAmount());
-}
-
 TEST(Equality, USD)
 {
     Money* five = Money::dollar(5);
@@ -24,11 +17,6 @@ TEST(Equality, USD)
     ASSERT_FALSE(five->equals(*six));
     
     Money* fiveFranc = Money::franc(5);
-    Money* otherFiveFranc = Money::franc(5);
-    ASSERT_TRUE(fiveFranc->equals(*otherFiveFranc));
-    Money* sixFranc = Money::franc(6);
-    ASSERT_FALSE(fiveFranc->equals(*sixFranc));
-    
     ASSERT_FALSE(fiveFranc->equals(*five));
 }
 
